@@ -1,12 +1,462 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+<embed src="img/yonggan.mp3" hidden="true" autostart="true" loop="true">
+	
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+	<meta charset="utf-8" />
+	<!--<metacharset="UTF-8">-->
+	<!--<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">--> 
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>立方体</title>
+	<style>
+		*{
+			margin: 0; 
+			padding: 0;
+		}
+		.wrapper{
+		/*	width: 50px;
+			height: 50px;*/
+			margin-left: 750px;
+			margin-top: 40px;
+			position: relative;
+			perspective: 10000px;	/*立体感*/
+		}
+		@keyframes wang{
+			100% {
+				transform:rotateY(360deg) rotateX(360deg);
+			}
+		}
+		.content{
+			animation: wang 10s ease-in-out infinite;
+
+			color: #fff;
+			text-align: center;
+			line-height: 200px;
+			font-size: 200px;
+			height: 200px;
+			width: 200px;
+			position: relative;
+			transform-style: preserve-3d;		/*使子元素成3D显示*/
+			/*background: #000;*/
+		}
+		.content:hover{
+			animation-play-state: paused;		/*鼠标移入暂停动画*/
+		}	
+		.box{
+			opacity: 0.7;
+			position: absolute;
+			width: 400px;
+			height: 400px;
+		}
+		.before{
+			transform: translateZ(200px);
+			background-color: #fae48c;
+		}
+		.after{
+			transform: translateZ(-200px);
+		}
+		.left{
+			transform: rotateY(-90deg) translateZ(200px);
+		}
+		.right{
+			transform: rotateY(90deg) translateZ(200px);
+		}
+		.up{
+			transform: rotateX(90deg) translateZ(200px);
+		}
+		.down{
+			transform: rotateX(-90deg) translateZ(200px);
+		}
+
+	</style>
+	<style>
+	  html, body {
+      margin: 0;
+	  
+      padding:0;
+      /*height: 100%*/
+    }
+    
+    .sky {
+      height: 480px;
+      background: #007fd5;
+      position: relative;
+      overflow: hidden;
+      -webkit-animation: sky_background 50s ease-out infinite;
+      -moz-animation: sky_background 50s ease-out infinite;
+      -o-animation: sky_background 50s ease-out infinite;
+      animation: sky_background 50s ease-out infinite;
+      -webkit-transform: translate3d(0, 0, 0);
+      -ms-transform: translate3d(0, 0, 0);
+      -o-transform: translate3d(0, 0, 0);
+      transform: translate3d(0, 0, 0);
+    }
+    
+    .sky .clouds_one {
+      background: url("C:\Users\lenovo\Pictures\Camera Roll\1/cloud_one.png");
+      position: absolute;
+      left: 0;
+      top: 0;
+      height: 100%;
+      width: 300%;
+      -webkit-animation: cloud_one 50s linear infinite;
+      -moz-animation: cloud_one 50s linear infinite;
+      -o-animation: cloud_one 50s linear infinite;
+      animation: cloud_one 50s linear infinite;
+      -webkit-transform: translate3d(0, 0, 0);
+      -ms-transform: translate3d(0, 0, 0);
+      -o-transform: translate3d(0, 0, 0);
+      transform: translate3d(0, 0, 0);
+    }
+    
+    .sky .clouds_two {
+      background: url("C:\Users\lenovo\Pictures\Camera Roll\1/cloud_two.png");
+      position: absolute;
+      left: 0;
+      top: 0;
+      height: 100%;
+      width: 300%;
+      -webkit-animation: cloud_two 75s linear infinite;
+      -moz-animation: cloud_two 75s linear infinite;
+      -o-animation: cloud_two 75s linear infinite;
+      animation: cloud_two 75s linear infinite;
+      -webkit-transform: translate3d(0, 0, 0);
+      -ms-transform: translate3d(0, 0, 0);
+      -o-transform: translate3d(0, 0, 0);
+      transform: translate3d(0, 0, 0);
+    }
+    
+    .sky .clouds_three {
+      background: url("C:\Users\lenovo\Pictures\Camera Roll\1/cloud_three.png");
+      position: absolute;
+      left: 0;
+      top: 0;
+      height: 100%;
+      width: 300%;
+      -webkit-animation: cloud_three 100s linear infinite;
+      -moz-animation: cloud_three 100s linear infinite;
+      -o-animation: cloud_three 100s linear infinite;
+      animation: cloud_three 100s linear infinite;
+      -webkit-transform: translate3d(0, 0, 0);
+      -ms-transform: translate3d(0, 0, 0);
+      -o-transform: translate3d(0, 0, 0);
+      transform: translate3d(0, 0, 0);
+    }
+    
+    @-webkit-keyframes sky_background {
+      0% {
+    	background: #007fd5;
+    	color: #007fd5
+      }
+      50% {
+    	background: #000;
+    	color: #a3d9ff
+      }
+      100% {
+    	background: #007fd5;
+    	color: #007fd5
+      }
+    }
+    @-moz-keyframes sky_background {
+      0% {
+    	background: #007fd5;
+    	color: #007fd5
+      }
+      50% {
+    	background: #000;
+    	color: #a3d9ff
+      }
+      100% {
+    	background: #007fd5;
+    	color: #007fd5
+      }
+    }
+    @keyframes sky_background {
+      0% {
+    	background: #007fd5;
+    	color: #007fd5
+      }
+      50% {
+    	background: #000;
+    	color: #a3d9ff
+      }
+      100% {
+    	background: #007fd5;
+    	color: #007fd5
+      }
+    }
+    
+    @-webkit-keyframes cloud_one {
+      0% {
+    	left: 0
+      }
+      100% {
+    	left: -200%
+      }
+    }
+    @-moz-keyframes cloud_one {
+      0% {
+    	left: 0
+      }
+      100% {
+    	left: -200%
+      }
+    }
+    @keyframes cloud_one {
+      0% {
+    	left: 0
+      }
+      100% {
+    	left: -200%
+      }
+    }
+    
+    @-webkit-keyframes cloud_two {
+      0% {
+    	left: 0
+      }
+      100% {
+    	left: -200%
+      }
+    }
+    @-moz-keyframes cloud_two {
+      0% {
+    	left: 0
+      }
+      100% {
+    	left: -200%
+      }
+    }
+    @keyframes cloud_two {
+      0% {
+    	left: 0
+      }
+      100% {
+    	left: -200%
+      }
+    }
+    
+    @-webkit-keyframes cloud_three {
+      0% {
+    	left: 0
+      }
+      100% {
+    	left: -200%
+      }
+    }
+    @-moz-keyframes cloud_three {
+      0% {
+    	left: 0
+      }
+      100% {
+    	left: -200%
+      }
+    }
+    @keyframes cloud_three {
+      0% {
+    	left: 0
+      }
+      100% {
+    	left: -200%
+      }
+    }
+	</style>
+	<style>
+	<!--字体大小-->
+		.p1{font-size:30px; left:0; top:0; color:yellow}
+		.p2{font-size:40px; left:0; top:0; color:black}
+		.p3{font-size:50px; left:0; top:0; color:red}
+        .p4{font-size:50px; left:0; top:0; color:yellow}		
+	</style>
+<style>
+	.file {
+	    position: relative;
+		button{
+        position:absolute;
+        left:0;
+        top:0;
+		}
+        display: inline-block;
+        background: #D0EEFF;
+        border: 1px solid #99D3F5;
+        border-radius: 4px;
+        padding: 4px 12px;
+        overflow: hidden;
+        color: #1E88C7;
+        text-decoration: none;
+        text-indent: 0;
+        line-height: 2px;
+     }
+ 
+    .file input {
+         position: absolute;
+         font-size: 10px;
+         left: 0;
+         top: 0;
+         opacity: 0;
+     }
+ 
+    .file:hover {
+         background: #AADFFD;
+         border-color: #78C3F3;
+         color: #004974;
+         text-decoration: none;
+     }
+</style>
 </head>
-<body>
-    <object height="50" width="100" data="/img/cx.mp3"></object>
+
+<body  background="/img/mzj.jpg"style="background-repeat:no-repeat ;background-size:100% 100%;background-attachment: fixed;"><!--背景-->
+<object
+height="50%"
+width="50%"
+classid="clsid:22D6F312-B0F6-11D0-94AB-0080C74C7E95">
+<param name="AutoStart" value="1" />
+<param name="FileName" value="F:\KuGou\卓依婷 - 萍聚.mp3" />
+</object>
+<div id="text"></div>  
+    <canvas id="keleyi_com"></canvas>
+ <div class="wrapper">
+     <div class="container-fluid"> 
+         <!-- end page title -->
+          <div class="row">
+             <div class="col-12">
+                 <div class="card">
+                     <div class="card-body">
+                         <form class="form-horizontal">
+                             <div class="form-group row" style="margin-top:-0px">
+                                 <label class="col-sm-2 col-form-label" style="margin-left:-650px"></label>
+                                 <div class="col-sm-10" style="margin-top:-230px">
+                                     <a href="javascript:;" class="file" style="margin-left:-750px" >选择文件
+                                         <input type="file" name="img" required>
+                                     </a>
+                                     <img id="img" height="100" src="">
+                                 </div>
+                             </div>
+                             <div class="form-group row" >
+                                 <label class="col-sm-2 col-form-label"></label>
+                                 <div class="col-sm-10" style="margin-top:-220px">
+                                     <button type="button" class="btn btn-primary" onclick="return preserve()" style="margin-left:-560px">保存</button>
+                                 </div>
+                             </div>
+                         </form>
+ 
+                     </div> <!-- end card-box -->
+                 </div> <!-- end card-->
+             </div><!-- end col -->
+         </div>
+         <!-- end row --> 
+     </div>
+ </div>
+ 
+ <script>
+     function preserve()
+     {
+         var formData    = new FormData();
+         var img = $("[name='img']").prop('files')[0];/*获取上传图片的信息*/
+         formData.append("img",img);
+         $.ajax({
+             type : "post",
+             url : "{:URL('admin/Banner/shopbanneradd')}",/*此处填写上传路径*/
+             processData : false,
+             contentType : false,
+             data : formData,
+             success : function(data) {
+ 
+             }
+         });
+     }
+ 
+ </script>
+ <!-- 上传图片并预览的js文件 start  无需改动-->
+ <script type="text/javascript">
+     var small_img = document.querySelector('input[name=small_img]');
+     var img = document.querySelector('input[name=img]');
+     small_imgs = document.querySelector('#small_img');
+     imgs = document.querySelector('#img');
+     if (small_img) {
+         small_img.addEventListener('change', function() {
+             var file = this.files[0];
+             var reader = new FileReader();
+             // 监听reader对象的的onload事件，当图片加载完成时，把base64编码賦值给预览图片
+             reader.addEventListener("load", function() {
+                 small_imgs.src = reader.result;
+             }, false);
+             // 调用reader.readAsDataURL()方法，把图片转成base64
+             reader.readAsDataURL(file);
+             $("img").eq(0).css("display", "block");
+         }, false);
+     }
+     if(img){
+         img.addEventListener('change', function() {
+             var file = this.files[0];
+             var reader = new FileReader();
+             // 监听reader对象的的onload事件，当图片加载完成时，把base64编码賦值给预览图片
+             reader.addEventListener("load", function() {
+                 imgs.src = reader.result;
+             }, false);
+             // 调用reader.readAsDataURL()方法，把图片转成base64
+             reader.readAsDataURL(file);
+             $("img").eq(1).css("display", "block");
+         }, false);
+     }
+ </script>
+ 
+
+
+
+</script>
+    <div id="imgContainer" style="margin-top: 10px;"></div>
+	<div class="wrapper">
+		<div class="content">
+			<div class="before box">
+			    <body>
+		            <div id="box">
+		                <img src="/img/timg (1).jpg" width="400" height="400">
+		             </div>
+	            </body>
+			</div>
+			<div class="after box">
+			     <body>
+		            <div id="box">
+		                <img src="/img/timg (2).jpg" width="400" height="400">
+		             </div>
+	            </body>
+			</div>
+			<div class="up box">
+			     <body>                                                
+		            <div id="box">                                     
+		                <img src="/img/timg (3).jpg" width="400" height="400">
+		             </div>                                            
+	            </body>                                                
+			</div>                                                     
+			<div class="down box">                                     
+			     <body>                                                
+		            <div id="box">                                     
+		                <img src="/img/timg (4).jpg" width="400" height="400">
+		             </div>                                            
+	            </body>                                                
+			</div>                                                     
+			<div class="left box">                                     
+			     <body>                                                
+		            <div id="box">                                     
+		                <img src="/img/timg (5).jpg" width="400" height="400">
+		             </div>                                            
+	            </body>                                                
+			</div>                                                     
+			<div class="right box">                                    
+			     <body>                                                
+		            <div id="box">                                     
+		                <img src="/img/timg (6).jpg" width="400" height="400">
+		             </div>                                           
+	            </body>
+			</div>
+		</div>
+	</div>
+	<P>
+	<p class="p1" style="margin-left:15px" style="margin-top:px"></p>
+	<p class="p2" style="margin-left:15px" style="margin-top:px">人的一生注定会遇到两个人————</p>
+	<p class="p3" style="margin-left:115px" style="margin-top:px">一个惊艳了时光————</p>
+	<p class="p4" style="margin-left:215px" style="margin-top:px">一个温柔了岁月......</p>
+	</p>
 </body>
 </html>
